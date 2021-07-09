@@ -27,7 +27,7 @@ export default function Dictionary() {
               onChange={updateKeyword}
             />
           </div>
-          <div class="col-2">
+          <div className="col-2">
             <input type="submit" value="search" className="btn button mb-2" />
           </div>
         </div>
