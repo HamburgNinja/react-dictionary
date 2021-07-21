@@ -1,13 +1,13 @@
 a {
   text-decoration: none;
-  color: rgb(73, 133, 133);
+  color: #498585;
 }
 
 a:hover {
-  color: indianred;
+  color: #cd5c5c;
 }
 
 .Phonetics {
   font-size: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
