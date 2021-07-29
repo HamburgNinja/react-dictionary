@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Results from "./Results";
 import PhotoResults from "./PhotoResults";
+import VideoResults from "./VideoResults";
 import axios from "axios";
 
 import "./Dictionary.css";
@@ -8,16 +9,20 @@ import "./Dictionary.css";
 export default function Dictionary() {
   let [keyword, setKeyword] = useState(null);
   let [results, setResults] = useState(null);
-  let [photoResults, setphotoResults] = useState(null);
+  let [photoResults, setPhotoResults] = useState(null);
+  let [videoResults, setVideoResults] = useState(null);
 
   function handleDictionaryResponse(response) {
     setResults(response.data[0]);
   }
 
-  function handlePictureResponse(response) {
-    setphotoResults(response.data.photos);
+  function handlePhotoResponse(response) {
+    setPhotoResults(response.data.photos);
   }
 
+  function handleVideoResponse(response) {
+    setVideoResults(response.data.videos);
+  }
   function handleKeyword(event) {
     event.preventDefault();
 
@@ -26,9 +31,15 @@ export default function Dictionary() {
 
     let pexelsApiKey =
       "563492ad6f917000010000018d721743e3d440938d04f302b89a70bc";
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
+    let pexelsPhotosApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
+    let pexelsVideosApiUrl = `https://api.pexels.com/videos/search?query=${keyword}&per_page=3`;
     let headers = { Authorization: `Bearer ${pexelsApiKey}` };
-    axios.get(pexelsApiUrl, { headers: headers }).then(handlePictureResponse);
+    axios
+      .get(pexelsPhotosApiUrl, { headers: headers })
+      .then(handlePhotoResponse);
+    axios
+      .get(pexelsVideosApiUrl, { headers: headers })
+      .then(handleVideoResponse);
   }
 
   function updateKeyword(event) {
@@ -59,6 +70,7 @@ export default function Dictionary() {
       <div className="resultDisplay">
         <Results results={results} />
         <PhotoResults photoResults={photoResults} />
+        <VideoResults videoResults={videoResults} />
       </div>
     </div>
   );

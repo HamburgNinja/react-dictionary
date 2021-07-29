@@ -3,8 +3,6 @@ import React from "react";
 import "./PhotoResults.css";
 
 export default function PhotoResults(props) {
-  console.log(props.photoResults);
-
   if (props.photoResults) {
     return (
       <div className="PhotoResults row">
