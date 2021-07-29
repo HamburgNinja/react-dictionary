@@ -52,8 +52,8 @@ export default function Dictionary() {
       <div className="dictionary">
         <h1>DICTIONARY 📚</h1>
         <form onSubmit={handleKeyword}>
-          <div className="row search">
-            <div className="col-10">
+          <div className="row justify-content-center search">
+            <div className="col-10 col-md-6">
               <input
                 type="search"
                 className="form-control"
@@ -61,7 +61,7 @@ export default function Dictionary() {
                 onChange={updateKeyword}
               />
             </div>
-            <div className="col-2">
+            <div className="col-10 col-md-2">
               <input type="submit" value="search" className="btn button mb-2" />
             </div>
           </div>

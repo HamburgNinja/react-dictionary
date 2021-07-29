@@ -9,7 +9,7 @@ export default function VideoResults(props) {
       <div className="VideoResults row">
         {props.videoResults.map(function (video, index) {
           return (
-            <div className="col-4" key={index}>
+            <div className="col-12 col-sm-6 col-md-4" key={index}>
               <video controls className="img-fluid">
                 <source src={video.video_files[0].link} type="video/mp4" />
               </video>

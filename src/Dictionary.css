@@ -1,20 +1,35 @@
 h1 {
   margin: 0 0 40px 0;
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 700;
   color: #383333;
 }
 
+input {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  input {
+    margin-bottom: 0;
+  }
+}
+
 .dictionary {
   text-align: center;
-  padding: 80px 200px 50px 200px;
+  padding: 80px 0 50px;
   background: #a9c4c4;
 }
 
 .button {
   background: #cd5c5c;
   color: #fff;
+  width: 100%;
 }
 
 .resultDisplay {
