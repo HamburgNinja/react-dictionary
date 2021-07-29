@@ -16,3 +16,7 @@ h1 {
   background: #cd5c5c;
   color: #fff;
 }
+
+.resultDisplay {
+  padding: 30px 25px 5px 30px;
+}

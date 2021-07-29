@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Results from "./Results";
+import PhotoResults from "./PhotoResults";
 import axios from "axios";
 
 import "./Dictionary.css";
@@ -7,16 +8,27 @@ import "./Dictionary.css";
 export default function Dictionary() {
   let [keyword, setKeyword] = useState(null);
   let [results, setResults] = useState(null);
+  let [photoResults, setphotoResults] = useState(null);
 
-  function handleResponse(response) {
+  function handleDictionaryResponse(response) {
     setResults(response.data[0]);
+  }
+
+  function handlePictureResponse(response) {
+    setphotoResults(response.data.photos);
   }
 
   function handleKeyword(event) {
     event.preventDefault();
 
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
-    axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(handleDictionaryResponse);
+
+    let pexelsApiKey =
+      "563492ad6f917000010000018d721743e3d440938d04f302b89a70bc";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
+    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
+    axios.get(pexelsApiUrl, { headers: headers }).then(handlePictureResponse);
   }
 
   function updateKeyword(event) {
@@ -44,8 +56,9 @@ export default function Dictionary() {
           </div>
         </form>
       </div>
-      <div>
+      <div className="resultDisplay">
         <Results results={results} />
+        <PhotoResults photoResults={photoResults} />
       </div>
     </div>
   );
