@@ -1,8 +1,9 @@
-span {
-  margin: 10px 10px 30px 10px;
+.synonym {
+  margin: 8px;
   padding: 4px 10px;
   border-radius: 8px;
   background: #498585;
   color: #fff;
-  line-height: 2.4;
+  white-space: nowrap;
+  display: inline-block;
 }
