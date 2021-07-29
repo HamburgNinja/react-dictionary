@@ -5,10 +5,11 @@ import "./Phonetics.css";
 export default function Phonetics(props) {
   return (
     <div className="Phonetics">
-      {props.phonetic.text}{" "}
-      <a href={props.phonetic.audio} target="_blank" rel="noreferrer">
-        ▶
-      </a>
+      <p>{props.phonetic.text}</p>
+      <audio controls src={props.phonetic.audio}>
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
     </div>
   );
 }
