@@ -6,9 +6,9 @@ export default function PhotoResults(props) {
   if (props.photoResults) {
     return (
       <div className="PhotoResults row">
-        {props.photoResults.map(function (photo, index) {
+        {props.photoResults.map(function (photo) {
           return (
-            <div className="col-12 col-sm-6 col-md-4" key={index}>
+            <div className="col-12 col-sm-6 col-md-4" key={photo.id}>
               <a href={photo.src.original} target="_blank" rel="noreferrer">
                 <img src={photo.src.landscape} alt="" className="img-fluid" />
               </a>

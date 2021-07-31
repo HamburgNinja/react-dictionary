@@ -1,5 +1,11 @@
 .Results h2 {
   font-weight: 600;
-  font-size: 40px;
+  font-size: 34px;
   color: #498585;
+}
+
+@media only screen and (min-width: 768px) {
+  h2 {
+    font-size: 40px;
+  }
 }

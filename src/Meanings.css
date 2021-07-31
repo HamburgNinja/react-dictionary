@@ -10,4 +10,7 @@ strong {
 
 .definitions {
   margin-bottom: 25px;
+  padding: 20px;
+  background: rgba(169, 196, 196, 0.35);
+  border-radius: 0 20px 0 20px;
 }
