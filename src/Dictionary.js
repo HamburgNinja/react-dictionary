@@ -9,15 +9,19 @@ import "./Dictionary.css";
 export default function Dictionary() {
   let [keyword, setKeyword] = useState("dictionary");
   let [results, setResults] = useState(null);
+  let [error, setError] = useState(false);
   let [photoResults, setPhotoResults] = useState(null);
   let [videoResults, setVideoResults] = useState(null);
   let [loaded, setLoaded] = useState(false);
 
   function handleDictionaryResponse(response) {
     setResults(response.data[0]);
+    setError(false);
   }
+
   function handleDictionaryError() {
     setResults(null);
+    setError(true);
   }
 
   function handlePhotoResponse(response) {
@@ -41,7 +45,7 @@ export default function Dictionary() {
       .catch(handleDictionaryError);
 
     let pexelsApiKey =
-      "563492ad6f917000010000010f0d719376f549cab2480c98e0ef8198";
+      "563492ad6f917000010000018d721743e3d440938d04f302b89a70bc";
     let pexelsPhotosApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
     let pexelsVideosApiUrl = `https://api.pexels.com/videos/search?query=${keyword}&per_page=3`;
     let headers = { Authorization: `Bearer ${pexelsApiKey}` };
@@ -67,6 +71,7 @@ export default function Dictionary() {
             <div className="row justify-content-center search">
               <div className="col-10 col-md-6">
                 <input
+                  autoFocus
                   type="search"
                   className="form-control"
                   placeholder="Enter a word"
@@ -84,7 +89,13 @@ export default function Dictionary() {
           </form>
         </div>
         <div className="resultDisplay">
-          <Results results={results} />
+          {error ? (
+            <p className="error-message">
+              Sorry, your word could not be found in the dictionary!
+            </p>
+          ) : (
+            <Results results={results} />
+          )}
           <PhotoResults photoResults={photoResults} />
           <VideoResults videoResults={videoResults} />
         </div>

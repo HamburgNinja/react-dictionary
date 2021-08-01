@@ -16,6 +16,10 @@ input {
   background: #a9c4c4;
 }
 
+.search {
+  margin: 0;
+}
+
 .button {
   background: #cd5c5c;
   color: #fff;
@@ -24,6 +28,13 @@ input {
 
 .resultDisplay {
   padding: 25px;
+}
+
+.error-message {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #cd5c5c;
 }
 
 @media only screen and (min-width: 768px) {
@@ -38,5 +49,10 @@ input {
 
   .dictionary {
     padding: 80px 0 50px;
+  }
+
+  .error-message {
+    font-size: 22px;
+    margin: 20px 0 30px;
   }
 }
