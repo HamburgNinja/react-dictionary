@@ -16,6 +16,9 @@ export default function Dictionary() {
   function handleDictionaryResponse(response) {
     setResults(response.data[0]);
   }
+  function handleDictionaryError() {
+    setResults(null);
+  }
 
   function handlePhotoResponse(response) {
     setPhotoResults(response.data.photos);
@@ -32,7 +35,10 @@ export default function Dictionary() {
 
   function search() {
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
-    axios.get(apiUrl).then(handleDictionaryResponse);
+    axios
+      .get(apiUrl)
+      .then(handleDictionaryResponse)
+      .catch(handleDictionaryError);
 
     let pexelsApiKey =
       "563492ad6f917000010000010f0d719376f549cab2480c98e0ef8198";
@@ -63,7 +69,7 @@ export default function Dictionary() {
                 <input
                   type="search"
                   className="form-control"
-                  placeholder="What would you like to look up?"
+                  placeholder="Enter a word"
                   onChange={updateKeyword}
                 />
               </div>

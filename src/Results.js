@@ -26,6 +26,10 @@ export default function Results(props) {
       </div>
     );
   } else {
-    return null;
+    return (
+      <p className="error-message">
+        Sorry, your word could not be found in the dictionary!
+      </p>
+    );
   }
 }
